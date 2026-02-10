@@ -56,7 +56,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="fa-solid fa-book mr-2"></i>タイトル
                     </label>
-                    <input type="text" name="book_name" placeholder="書籍タイトルを入力" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
+                    <input type="text" name="book_name" value="{{ request()->input('book_name') }}" placeholder="書籍タイトルを入力" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
                 </div>
 
                 <!-- 著者検索 -->
@@ -64,7 +64,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         <i class="fa-solid fa-user mr-2"></i>著者
                     </label>
-                    <input type="text" placeholder="著者名を入力" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
+                    <input type="text" name="author" value="{{ request()->input('author') }}" placeholder="著者名を入力" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
                 </div>
 
                 <!-- 出版社検索 -->
@@ -75,9 +75,9 @@
                     <div class="relative">
                         <select name="publisher" class="w-full px-4 py-2 pr-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all bg-white text-gray-800 appearance-none cursor-pointer">
                             <option value="">すべて</option>
-                            <option value="1">出版社1</option>
-                            <option value="2">出版社2</option>
-                            <option value="3">出版社3</option>
+                            @foreach ($publishers as $publisher)
+                                <option {{ request()->input('publisher') == $publisher->id ? 'selected' : '' }} value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                            @endforeach
                         </select>
                         <!-- 矢印アイコン（SVG） -->
                         <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
@@ -94,9 +94,9 @@
                         <i class="fa-solid fa-yen-sign mr-2"></i>金額
                     </label>
                     <div class="flex gap-2">
-                        <input type="number" placeholder="最小金額" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
+                        <input type="number" name="min_price" value="{{ request()->input('min_price') }}" placeholder="最小金額" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
                         <span class="self-center text-gray-400">〜</span>
-                        <input type="number" placeholder="最大金額" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
+                        <input type="number" name="max_price" value="{{ request()->input('max_price') }}" placeholder="最大金額" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1a1a1a] focus:border-transparent transition-all">
                     </div>
                 </div>
 
