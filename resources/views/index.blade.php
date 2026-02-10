@@ -125,12 +125,13 @@
         <!-- Book List -->
         <div class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
             <div class="p-4 border-b border-gray-100">
-                <p class="text-sm font-medium text-gray-500">検索結果: <span class="text-[#1a1a1a]">5件</span></p>
+            　　　<p class="text-sm font-medium text-gray-500">検索結果: <span class="text-[#1a1a1a]">{{ $books->count() }}件</span></p>
             </div>
 
             <ul class="divide-y divide-gray-50">
 
-                <!-- Book 1 -->
+                <!-- Book -->
+                @forelse ($books as $book)
                 <li class="book-item group flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors duration-200">
                     <!-- Book Cover -->
                     <div class="flex-shrink-0">
@@ -140,164 +141,31 @@
                     <!-- Book Info -->
                     <div class="flex-1 min-w-0">
                         <h3 class="text-lg font-medium text-gray-800 mb-1.5 group-hover:text-[#3b82f6] transition-colors">
-                            Laravel実践開発ガイド
+                            {{ $book->book_name }}
                         </h3>
                         <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600">
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-user w-3.5 text-gray-400"></i>
-                                <span>山田 太郎</span>
+                                <span>{{ $book->author }}</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-building w-3.5 text-gray-400"></i>
-                                <span>技術書出版</span>
+                                <span>出版社</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-yen-sign w-3.5 text-gray-400"></i>
-                                <span class="font-medium text-gray-800">¥3,200</span>
+                                <span class="font-medium text-gray-800">¥{{ number_format($book->price) }}</span>
                             </div>
                             <div class="flex items-center gap-1.5">
                                 <i class="fa-solid fa-calendar w-3.5 text-gray-400"></i>
-                                <span>2024年1月15日</span>
+                                <span>{{ $book->published_date }}</span>
                             </div>
                         </div>
                     </div>
                 </li>
-
-                <!-- Book 2 -->
-                <li class="book-item group flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors duration-200">
-                    <!-- Book Cover -->
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg shadow-md"></div>
-                    </div>
-
-                    <!-- Book Info -->
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-lg font-medium text-gray-800 mb-1.5 group-hover:text-[#3b82f6] transition-colors">
-                            React完全入門
-                        </h3>
-                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600">
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-user w-3.5 text-gray-400"></i>
-                                <span>佐藤 花子</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-building w-3.5 text-gray-400"></i>
-                                <span>Web開発社</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-yen-sign w-3.5 text-gray-400"></i>
-                                <span class="font-medium text-gray-800">¥2,800</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-calendar w-3.5 text-gray-400"></i>
-                                <span>2024年3月20日</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Book 3 -->
-                <li class="book-item group flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors duration-200">
-                    <!-- Book Cover -->
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-lg shadow-md"></div>
-                    </div>
-
-                    <!-- Book Info -->
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-lg font-medium text-gray-800 mb-1.5 group-hover:text-[#3b82f6] transition-colors">
-                            TypeScript実践プログラミング
-                        </h3>
-                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600">
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-user w-3.5 text-gray-400"></i>
-                                <span>鈴木 一郎</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-building w-3.5 text-gray-400"></i>
-                                <span>プログラミング出版</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-yen-sign w-3.5 text-gray-400"></i>
-                                <span class="font-medium text-gray-800">¥3,500</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-calendar w-3.5 text-gray-400"></i>
-                                <span>2024年2月10日</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Book 4 -->
-                <li class="book-item group flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors duration-200">
-                    <!-- Book Cover -->
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-20 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg shadow-md"></div>
-                    </div>
-
-                    <!-- Book Info -->
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-lg font-medium text-gray-800 mb-1.5 group-hover:text-[#3b82f6] transition-colors">
-                            Docker/Kubernetes完全ガイド
-                        </h3>
-                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600">
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-user w-3.5 text-gray-400"></i>
-                                <span>田中 次郎</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-building w-3.5 text-gray-400"></i>
-                                <span>インフラ技術社</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-yen-sign w-3.5 text-gray-400"></i>
-                                <span class="font-medium text-gray-800">¥4,200</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-calendar w-3.5 text-gray-400"></i>
-                                <span>2024年4月5日</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Book 5 -->
-                <li class="book-item group flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors duration-200">
-                    <!-- Book Cover -->
-                    <div class="flex-shrink-0">
-                        <div class="w-16 h-20 bg-gradient-to-br from-red-400 to-red-600 rounded-lg shadow-md"></div>
-                    </div>
-
-                    <!-- Book Info -->
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-lg font-medium text-gray-800 mb-1.5 group-hover:text-[#3b82f6] transition-colors">
-                            Vue.js 3 実践開発
-                        </h3>
-                        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-600">
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-user w-3.5 text-gray-400"></i>
-                                <span>高橋 三郎</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-building w-3.5 text-gray-400"></i>
-                                <span>フロントエンド出版</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-yen-sign w-3.5 text-gray-400"></i>
-                                <span class="font-medium text-gray-800">¥2,900</span>
-                            </div>
-                            <div class="flex items-center gap-1.5">
-                                <i class="fa-solid fa-calendar w-3.5 text-gray-400"></i>
-                                <span>2024年5月12日</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
+                @endforeach
             </ul>
         </div>
-
     </main>
 
 </body>
