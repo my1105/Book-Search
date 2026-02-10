@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Publisher;
 
 class Book extends Model
 {
@@ -12,4 +13,9 @@ class Book extends Model
         'published_date',
         'price',
     ];
+    public function publisher()
+    {
+        return $this->belongsTo(Publisher::class);
+    }
+
 }
